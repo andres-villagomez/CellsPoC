@@ -3,7 +3,7 @@ RestFull Dinamic Table
 
 ## Deploy Middleware : service-app
 
-  Ctrl + Alt + T\ 
+  Ctrl + Alt + T 
   cd /Cells-Dinamic-Table/service-app
   nvm ls
   nvm use 8.11.4

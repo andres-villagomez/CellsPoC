@@ -20,15 +20,11 @@ const csv = require('csv-parser')
 const fs = require('fs')
 const results = [];
 
-fs.createReadStream('data.csv')
+fs.createReadStream('ClusterData.csv')
   .pipe(csv())
   .on('data', (data) => results.push(data))
   .on('end', () => {
     console.log(results);
-    // [
-    //   { NAME: 'Daffy Duck', AGE: '24' },
-    //   { NAME: 'Bugs Bunny', AGE: '22' }
-    // ]
   });
 
 const express = require("express");
@@ -42,5 +38,5 @@ app.get('/endpoint',function(req,res) {
 });
 
 app.listen(3000, () => {
-  console.log("Corriendo sobre puerto 3000");
+  console.log("Server deployed in port 3000");
 });

@@ -40,9 +40,13 @@
           type:Boolean,
           observer:'_activeChanged'
         },
-	obj: {
+        corrida: {
+        type:'Array',
+        value: [1,2,3,4]
+        },
+	objectArray: {
 	  type:'Object',
-	  value:{}
+	  value:[]
 	}
       };
     }
@@ -52,14 +56,14 @@
       console.log(this.objectArray);
       this.$.ajax.addEventListener('request-success', function(e) {
         console.log(e);
-        this.objectArray = e.detail.name;
-        console.log('objectArray',this.objectArray)
+        this.objectArray = e.detail;
+        console.log('object ->',this.objectArray)
       });
       this.$.ajax.generateRequest();
     }
 
     recorrerObjeto() {
-      console.log(this.obj);
+      console.log(this.objectArray);
       return Object.keys(this.objectArray);
     }
 
@@ -89,9 +93,9 @@
           </tr>
           <template is = "dom-repeat" items = "{{objectArray}}">
             <tr>
-  	      <td class = "verde">{{itmes}}</td>
-              <td class = "blanco">{{items}}</td>
-              <td class = "rojo">{{items}}</td>
+  	      <td class = "verde">[[itmes]]</td>
+              <td class = "blanco">[[items]]</td>
+              <td class = "rojo">[[items]]</td>
 	    </tr>
           </template>
         </table>

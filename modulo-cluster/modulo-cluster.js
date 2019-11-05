@@ -37,38 +37,34 @@
     static get properties() {
       return {
         active: {
-          type: Boolean,
-          observer: '_activeChanged'
-        },
-        headerp: {
-         type:"Array",
-         value:[1,2,3,4]
+          type:Boolean,
+          observer:'_activeChanged'
         },
 	obj: {
-	  type: "Object",
-	  value: 'Alex'
+	  type:'Object',
+	  value:{}
 	}
       };
     }
 
     connectedCallback(){
       super.connectedCallback();
-      console.log(this.obj);
+      console.log(this.objectArray);
       this.$.ajax.addEventListener('request-success', function(e) {
         console.log(e);
-        this.obj = e.detail.name;
-        console.log('obj',this.obj)
+        this.objectArray = e.detail.name;
+        console.log('objectArray',this.objectArray)
       });
       this.$.ajax.generateRequest();
     }
 
     recorrerObjeto() {
       console.log(this.obj);
-      return Object.keys(this.obj);
+      return Object.keys(this.objectArray);
     }
 
     _activeChanged(newValue, oldValue) {
-      this.toggleClass('obj', newValue);
+      this.toggleClass('objectArray', newValue);
     }
 
    static get template() {
@@ -91,11 +87,11 @@
               <td class = "blanco">Adeudo</td>
               <td class = "rojo">Tasa</td>
           </tr>
-          <template is = "dom-repeat" items = "[[headerp]]">
+          <template is = "dom-repeat" items = "{{objectArray}}">
             <tr>
-  	      <td class = "verde">[[obj]]</td>
-              <td class = "blanco">[[obj]]</td>
-              <td class = "rojo">{{obj}}</td>
+  	      <td class = "verde">{{itmes}}</td>
+              <td class = "blanco">{{items}}</td>
+              <td class = "rojo">{{items}}</td>
 	    </tr>
           </template>
         </table>

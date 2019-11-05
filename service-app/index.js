@@ -1,10 +1,10 @@
 /*var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "123456",
-  database: "CELLS_DEMO"
+  host:"localhost",
+  user:"root",
+  password:"123456",
+  database:"CELLS_DEMO"
 });
 
 con.connect(function(err) {
@@ -15,19 +15,31 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("CELLS_DEMO_DATA Record Read");
   });
-});
-*/
+});*/
+const csv = require('csv-parser')
+const fs = require('fs')
+const results = [];
+
+fs.createReadStream('data.csv')
+  .pipe(csv())
+  .on('data', (data) => results.push(data))
+  .on('end', () => {
+    console.log(results);
+    // [
+    //   { NAME: 'Daffy Duck', AGE: '24' },
+    //   { NAME: 'Bugs Bunny', AGE: '22' }
+    // ]
+  });
+
 const express = require("express");
 const app = express();
-app.get('/endpoint',function(req,res){
+app.get('/endpoint',function(req,res) {
   res.setHeader('Content-Type', 'application/json');
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.send(JSON.stringify({
-    "name":"Rose"
-   }))
-})
+  res.send(JSON.stringify(results))
+});
 
 app.listen(3000, () => {
   console.log("Corriendo sobre puerto 3000");

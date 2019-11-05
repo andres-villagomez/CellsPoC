@@ -1,0 +1,53 @@
+@import "bower_components/cells-sass/main";
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  font-family: var(--cells-fontDefault, sans-serif);
+  @apply --modulo-cluster;
+}
+
+:host([hidden]), [hidden] {
+  display: none !important;
+}
+
+*, *:before, *:after {
+  font: inherit;
+  box-sizing: inherit;
+}
+
+/* Table Style Sheet */
+.verde {background-color:green;}
+.blanco {background-color:gray;}
+.rojo {background-color:red;}
+.negro {background-color:black;}
+.amarillo {background-color:yellow;}
+
+.dinamic-tbl{
+  border-style:solid;
+  border-width: thin;
+  background-color:#7d7d7d;
+  opacity:1;
+  text-align:center;
+}
+
+table, tr {
+  border-style:none;
+  padding:0px;
+  width:100%;
+  heigh:100%;
+  border-width:thin;
+}
+
+td {
+  border-width:thin;
+  border-style:none;
+  padding:3px;
+  color:white;
+  text-align:center;
+}
+
+caption {
+  color:white;
+  width:100%;
+}

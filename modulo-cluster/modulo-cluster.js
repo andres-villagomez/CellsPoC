@@ -42,19 +42,20 @@
         },
 	obj: {
 	  type: "Object",
-	  value:{}
+	  value: 'Alex'
 	}
       };
     }
 
     connectedCallback(){
-	super.connectedCallback();
-	console.log(this.obj);
-        this.$.ajax.addEventListener('request-success', function(e) {
-          console.log(e);
-          this.obj = e.detail.name;
-        });
-        this.$.ajax.generateRequest();
+      super.connectedCallback();
+      console.log(this.obj);
+      this.$.ajax.addEventListener('request-success', function(e) {
+        console.log(e);
+        this.obj = e.detail.name;
+        console.log('obj',this.obj)
+      });
+      this.$.ajax.generateRequest();
     }
 
     recorrerObjeto() {
@@ -66,12 +67,14 @@
       return html `
       <style include="modulo-cluster-styles modulo-cluster-shared-styles"></style>
       <slot></slot>
+
       <cells-generic-dp
         id = "ajax"
         host = "http://localhost:3000"
         path = "endpoint"
 	method= "GET">
       </cells-generic-dp>
+
       <div class = "dinamic-tbl">
         <table>
           <caption>CLUSTER</caption>
@@ -82,9 +85,9 @@
           </tr>
           <template is = "dom-repeat" items = "[[headerp]]">
             <tr>
-  	      <td class = "verde">[[Object.entries(obj)]]</td>
-              <td class = "blanco">[[recorrerobjeto()]]</td>
-              <td class = "rojo">[[obj]]</td>
+  	      <td class = "verde">[[obj]]</td>
+              <td class = "blanco">[[obj]]</td>
+              <td class = "rojo">{{obj}}</td>
 	    </tr>
           </template>
         </table>

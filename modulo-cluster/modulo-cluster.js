@@ -36,6 +36,10 @@
 
     static get properties() {
       return {
+        active: {
+          type: Boolean,
+          observer: '_activeChanged'
+        },
         headerp: {
          type:"Array",
          value:[1,2,3,4]
@@ -61,6 +65,10 @@
     recorrerObjeto() {
       console.log(this.obj);
       return Object.keys(this.obj);
+    }
+
+    _activeChanged(newValue, oldValue) {
+      this.toggleClass('obj', newValue);
     }
 
    static get template() {

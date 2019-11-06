@@ -35,17 +35,28 @@
     static get properties() {
       return {
 	objectArray: {
-	  type: Array,
-	  value: []
-	}
+	  type:Array,
+	  value:[]
+	},
+        arrayTitle: {
+          type:Array,
+          value:[]
+        }
       };
     }
     connectedCallback(){
       super.connectedCallback();
       console.log(this.objectArray);
       this.$.ajax.addEventListener('request-success', (e) => {
-        this.set('objectArray',e.detail)
+        //First Way
+        this.objectArray = e.detail
+        // Second Way
+        //this.set('objectArray',e.detail)
         console.log('New Array', this.objectArray)
+        this.arrayTitle = Object.keys(this.objectArray[0])
+        const size = this.arrayTitle.length
+	console.log('Array Title',this.arrayTitle)
+        console.log('Array Title', size)
       });
       this.$.ajax.generateRequest();
     }
@@ -63,37 +74,11 @@
       <div class = "dinamic-tbl">
         <table>
           <caption>CLUSTER</caption>
+          <template is="dom-repear" items="[[size]]">
             <tr>
-              <td class = "verde">TIPODEOPERACION</td>
-              <td class = "verde">PEM</td>
-              <td class = "verde">MONTO</td>
-              <td class = "verde">NACIONAL_INT</td>
-              <td class = "verde">ECI</td>
-              <td class = "verde">NIPOFF</td>
-              <td class = "verde">CVV2</td>
-              <td class = "verde">TJ_F_TJ_D</td>
-              <td class = "verde">NIVELCUENTA</td>
-              <td class = "verde">REINCIDENCIA</td>
-              <td class = "verde">SEGMENTO</td>
-              <td class = "verde">ANTIGUEDAD</td>
-              <td class = "verde">Q2</td>
-              <td class = "verde">DIASTRANSCURRIDOS</td>
-              <td class = "verde">NUMOVIMIENTOS</td>
-              <td class = "verde">DIFTIEMPOENTREMOVIMIENTOS</td>
-              <td class = "verde">MONTOF</td>
-              <td class = "verde">FRAUDE</td>
-              <td class = "verde">TP_TNP</td>
-              <td class = "verde">MISMOMONTO</td>
-              <td class = "verde">MISMAAFILIACION</td>
-              <td class = "verde">TIEMPOENTREMOVIMIENTOS</td>
-              <td class = "verde">SUMAMONTOMOVIMIENTOSSELECCIONADOS</td>
-              <td class = "verde">PATRONDESBLOQUEO</td>
-              <td class = "verde">AUTHCE</td>
-              <td class = "verde">DIFFECHAOPERACIONALTA</td>
-              <td class = "verde">SITUACION</td>
-              <td class = "verde">NORECONOCEPRODUCTO</td>
-              <td class = "verde">SINMOVIMIENTO</td>
+              <td class = "verde">[[items]]</td>
             </tr>
+          </template>
           <template is="dom-repeat" items="[[objectArray]]">
             <tr>
   	      <td class = "verde">[[item.TIPODEOPERACION]]</td>

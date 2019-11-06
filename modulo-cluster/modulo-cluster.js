@@ -37,16 +37,8 @@
 	objectArray: {
 	  type: Array,
 	  value: []
-	},
-        array: {
-          type: Array,
-          value: [],
-          computed:'generateArray(objectArray)'
-        }
+	}
       };
-    }
-    generateArray(a) {
-      return a
     }
     connectedCallback(){
       super.connectedCallback();

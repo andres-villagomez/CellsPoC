@@ -29,7 +29,7 @@ RestFull Dinamic Table
 
 ## Deploy Bakcend : SQL
 ```html
-  mysql -u root -p <br>
+  mysql -u root -p
 ```
   Deploy the SQL file content <br>
 

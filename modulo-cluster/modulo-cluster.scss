@@ -17,11 +17,11 @@
 }
 
 /* Table Style Sheet */
-.verde {background-color:green;}
-.blanco {background-color:gray;}
-.rojo {background-color:red;}
-.negro {background-color:black;}
-.amarillo {background-color:yellow;}
+.green {background-color:green;}
+.gray {background-color:gray;}
+.red {background-color:red;}
+.black {background-color:black;}
+.yellow {background-color:yellow;}
 
 .dinamic-tbl{
   border-style:solid;
@@ -36,7 +36,7 @@ table, tr {
   border-style:none;
   padding:0px;
   width:100%;
-  heigh:100%;
+  height:auto;
   border-width:thin;
 }
 

@@ -29,53 +29,38 @@
     * @demo demo/index.html
   */
   class ModuloCluster extends Polymer.Element {
-
     static get is() {
       return 'modulo-cluster';
     }
-
     static get properties() {
       return {
-        active: {
-          type:Boolean,
-          observer:'_activeChanged'
-        },
-        corrida: {
-        type:'Array',
-        value: [1,2,3,4]
-        },
 	objectArray: {
-	  type:'Object',
-	  value:[]
-	}
+	  type: Array,
+	  value: []
+	},
+        array: {
+          type: Array,
+          value: [],
+          computed:'generateArray(objectArray)'
+        }
       };
     }
-
+    generateArray(a) {
+      return a
+    }
     connectedCallback(){
       super.connectedCallback();
       console.log(this.objectArray);
-      this.$.ajax.addEventListener('request-success', function(e) {
-        console.log(e);
-        this.objectArray = e.detail;
-        console.log('object ->',this.objectArray)
+      this.$.ajax.addEventListener('request-success', (e) => {
+        this.set('objectArray',e.detail)
+        console.log('New Array', this.objectArray)
       });
       this.$.ajax.generateRequest();
     }
-
-    recorrerObjeto() {
-      console.log(this.objectArray);
-      return Object.keys(this.objectArray);
-    }
-
-    _activeChanged(newValue, oldValue) {
-      this.toggleClass('objectArray', newValue);
-    }
-
    static get template() {
       return html `
       <style include="modulo-cluster-styles modulo-cluster-shared-styles"></style>
       <slot></slot>
-
       <cells-generic-dp
         id = "ajax"
         host = "http://localhost:3000"
@@ -91,13 +76,13 @@
               <td class = "blanco">Adeudo</td>
               <td class = "rojo">Tasa</td>
           </tr>
-          <template is = "dom-repeat" items = "{{objectArray}}">
+          <template is="dom-repeat" items="[[objectArray]]">
             <tr>
-  	      <td class = "verde">[[itmes]]</td>
-              <td class = "blanco">[[items]]</td>
-              <td class = "rojo">[[items]]</td>
-	    </tr>
-          </template>
+  	      <td class = "verde">[[item.PEM]]</td>
+              <td class = "blanco">[[item.PEM]]</td>
+              <td class = "rojo">[[item.PEM]]</td>
+            </tr>
+          <template>
         </table>
       </div>
       `;

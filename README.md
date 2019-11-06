@@ -2,6 +2,7 @@
 RestFull Dinamic Table
 
 ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+![Java Script ES6](https://img.shields.io/badge/Java%20Script-ES6-red)
 
 ## Deploy Middleware : service-app
 ```html

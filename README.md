@@ -4,18 +4,17 @@ RestFull Dinamic Table
 ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
 
 ## Deploy Middleware : service-app
-
-  Ctrl + Alt + T <br> 
-  cd /Cells-Dinamic-Table/service-app <br>
-  nvm ls <br>
-  nvm use 8.11.4 <br>
-  node index.js <br>
-  
 ```html
+  Ctrl + Alt + T 
+  cd /Cells-Dinamic-Table/service-app
+  nvm ls
+  nvm use 8.11.4
+  node index.js
+```  
   <!-- Keep Terminal Running --><br>
   <!-- Open Explorer and visit --> <br>
   <!-- http://localhost:3000/endpoint --><br>
-```
+
 ## Deploy Fontend : modulo-cluster 
 
   Ctrl + Alt + T <br>

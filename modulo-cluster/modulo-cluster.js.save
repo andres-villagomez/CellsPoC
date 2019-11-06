@@ -1,0 +1,93 @@
+{
+  const {
+    html,
+  } = Polymer;
+  /**
+    `<modulo-cluster>` Description.
+
+    Example:
+
+    ```html
+    <modulo-cluster></modulo-cluster>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --modulo-cluster | :host    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */
+  class ModuloCluster extends Polymer.Element {
+    static get is() {
+      return 'modulo-cluster';
+    }
+    static get properties() {
+      return {
+	objectArray: {
+	  type: Array,
+	  value: []
+	},
+        array: {
+          type: Array,
+          value: [],
+          computed:'generateArray(objectArray)'
+        }
+      };
+    }
+    generateArray(a) {
+      return a
+    }
+    connectedCallback(){
+      super.connectedCallback();
+      console.log(this.objectArray);
+      this.$.ajax.addEventListener('request-success', (e) => {
+        this.set('objectArray',e.detail)
+        console.log('New Array', this.objectArray)
+      });
+      this.$.ajax.generateRequest();
+    }
+   static get template() {
+      return html `
+      <style include="modulo-cluster-styles modulo-cluster-shared-styles"></style>
+      <slot></slot>
+      <cells-generic-dp
+        id = "ajax"
+        host = "http://localhost:3000"
+        path = "endpoint"
+	method= "GET">
+      </cells-generic-dp>
+
+      <div class = "dinamic-tbl">
+        <table>
+          <caption>CLUSTER</caption>
+          <tr>
+              <td class = "verde">[[objectArray.item.TIPODEOPERACION]]</td>
+              <td class = "blanco">Adeudo</td>
+              <td class = "rojo">Tasa</td>
+          </tr>
+          <template is="dom-repeat" items="[[objectArray]]">
+            <tr>
+  	      <td class = "verde">[[item.PEM]]</td>
+              <td class = "blanco">[[item.PEM]]</td>
+              <td class = "rojo">[[item.PEM]]</td>
+            </tr>
+          <template>
+        </table>
+      </div>
+      `;
+    }
+  }
+  customElements.define(ModuloCluster.is, ModuloCluster);
+}
+`

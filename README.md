@@ -27,4 +27,10 @@ RestFull Dinamic Table
 ## Deploy Bakcend : SQL
   
   mysql -u root -p <br>
-  //Deploy the SQL file content
+  //Deploy the SQL file content <br>
+
+## HotFix Requirements
+
+  Install CORS Everywhere plugin in your explorer.<br>
+  CORS Everywhere works as a: <br>
+  Bypass CORS restrictions by altering http responses. 

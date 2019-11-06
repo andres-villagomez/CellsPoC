@@ -5,32 +5,33 @@ RestFull Dinamic Table
 
 ## Deploy Middleware : service-app
 ```html
-  Ctrl + Alt + T 
+  Ctrl + Alt + T
   cd /Cells-Dinamic-Table/service-app
   nvm ls
   nvm use 8.11.4
   node index.js
 ```  
-  <!-- Keep Terminal Running --><br>
-  <!-- Open Explorer and visit --> <br>
-  <!-- http://localhost:3000/endpoint --><br>
+  Keep Terminal Running<br>
+  Open Explorer and visit<br>
+  http://localhost:3000/endpoint<br>
 
 ## Deploy Fontend : modulo-cluster 
-
-  Ctrl + Alt + T <br>
-  cd /Cells-Dinamic-Table/modulo-cluster <br>
-  nvm ls <br>
-  nvm use 8.11.4 <br>
-  cells component:serve <br>
-  //Keep Terminal Running <br>
-  //Open Explorer and visit <br>
-  //http://localhost:8001/components/modulo-cluster/demo/index.html <br>
-
+```html
+  Ctrl + Alt + T
+  cd /Cells-Dinamic-Table/modulo-cluster
+  nvm ls
+  nvm use 8.11.4
+  cells component:serve
+```
+  Keep Terminal Running <br>
+  Open Explorer and visit <br>
+  http://localhost:8001/components/modulo-cluster/demo/index.html <br>
 
 ## Deploy Bakcend : SQL
-  
+```html
   mysql -u root -p <br>
-  //Deploy the SQL file content <br>
+```
+  Deploy the SQL file content <br>
 
 ## HotFix Requirements
 

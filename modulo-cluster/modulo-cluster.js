@@ -73,29 +73,29 @@
       <style include="modulo-cluster-styles modulo-cluster-shared-styles"></style>
       <slot></slot>
 
-      /* HTTP connection layer */
+      <!--HTTP connection layer-->
       <cells-generic-dp
         id = "ajax"
         host = "http://localhost:3000"
         path = "endpoint"
 	method= "GET">
       </cells-generic-dp>
-      /* HTTP connection layer */
+      <!--HTTP connection layer-->
 
-      /* Dinamic table design*/
+      <!--Dinamic table design-->
       <div class = "dinamic-tbl">
         <table>
           <caption>CLUSTER</caption>
 
-          /* Table titles */
+          <!--Table titles-->
           <template is="dom-repear" items="[[titleArraySize]]">
             <tr>
               <td class = "verde">[[item]]</td>
             </tr>
           </template>
-          /* Table titles */
+          <!--Table titles-->
 
-          /* Table content */
+          <!--Table content-->
           <template is="dom-repeat" items="[[objectArray]]">
             <tr>
   	      <td class = "green">[[item.TIPODEOPERACION]]</td>
@@ -129,9 +129,10 @@
               <td class = "green">[[item.SINMOVIMIENTO]]</td>
             </tr>
           <template>
-          /* Table content */
+          <!--Table content-->
         </table>
       </div>
+      <!--Dinamic table design-->
       `;
     }
   }

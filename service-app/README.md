@@ -16,3 +16,4 @@ Lite Node JS Server.
 ## Server Configuration
   npm install mysql -save<br>
   npm install fs<br>
+  npm install csv-parser

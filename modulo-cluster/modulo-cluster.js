@@ -32,56 +32,70 @@
     static get is() {
       return 'modulo-cluster';
     }
+
+    /*Dinamic table properties*/
     static get properties() {
       return {
-	objectArray: {
-	  type:Array,
-	  value:[]
-	},
+        //Table title printing
         arrayTitle: {
           type:Array,
           value:[]
         },
-        arraySize: {
+        //Table column calculation
+        titleArraySize: {
+          type:Array,
+          value:[]
+        },
+        //Table content printing
+        objectArray: {
           type:Array,
           value:[]
         }
       };
     }
+    /*Dinamic table properties*/
+
+    /* REST connection */
     connectedCallback(){
       super.connectedCallback();
-      console.log(this.objectArray);
       this.$.ajax.addEventListener('request-success', (e) => {
         this.objectArray = e.detail
-        console.log('New Array', this.objectArray)
         this.arrayTitle = Object.keys(this.objectArray[0])
         const size = this.arrayTitle.length
-        this.sizeArray = size
-        console.log('Size Array',this.sizeArray)
-	console.log('Array Title',this.arrayTitle)
-        console.log('Array Title', size)
+        this.titleArraySize = size
       });
       this.$.ajax.generateRequest();
     }
-   static get template() {
+    /* REST connection*/
+
+    static get template() {
       return html `
       <style include="modulo-cluster-styles modulo-cluster-shared-styles"></style>
       <slot></slot>
+
+      /* HTTP connection layer */
       <cells-generic-dp
         id = "ajax"
         host = "http://localhost:3000"
         path = "endpoint"
 	method= "GET">
       </cells-generic-dp>
+      /* HTTP connection layer */
 
+      /* Dinamic table design*/
       <div class = "dinamic-tbl">
         <table>
           <caption>CLUSTER</caption>
-          <template is="dom-repear" items="[[arraySize]]">
+
+          /* Table titles */
+          <template is="dom-repear" items="[[titleArraySize]]">
             <tr>
               <td class = "verde">[[item]]</td>
             </tr>
           </template>
+          /* Table titles */
+
+          /* Table content */
           <template is="dom-repeat" items="[[objectArray]]">
             <tr>
   	      <td class = "green">[[item.TIPODEOPERACION]]</td>
@@ -115,6 +129,7 @@
               <td class = "green">[[item.SINMOVIMIENTO]]</td>
             </tr>
           <template>
+          /* Table content */
         </table>
       </div>
       `;

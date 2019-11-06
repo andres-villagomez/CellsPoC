@@ -1,7 +1,9 @@
 # Cells-Dinamic-Table
 RestFull Dinamic Table
 
+![Cells 2.7.12](https://img.shields.io/badge/Cells-2.7.12-blue)
 ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+![NPM 8.11.4](https://img.shields.io/badge/NPM-8.11.4-critical)
 ![Java Script ES6](https://img.shields.io/badge/Java%20Script-ES6-red)
 
 ## Deploy Middleware : service-app

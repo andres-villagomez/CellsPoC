@@ -36,33 +36,25 @@
     /*Dinamic table properties*/
     static get properties() {
       return {
-        //Table title printing
         arrayTitle: {
-          type:Array,
-          value:[]
+          type: Array,
+          value: []
         },
-        //Table column calculation
-        titleArraySize: {
-          type:Array,
-          value:[]
-        },
-        //Table content printing
         objectArray: {
-          type:Array,
-          value:[]
+          type: Array,
+          value: []
         }
       };
     }
     /*Dinamic table properties*/
 
     /* REST connection */
-    connectedCallback(){
+    connectedCallback() {
       super.connectedCallback();
       this.$.ajax.addEventListener('request-success', (e) => {
-        this.objectArray = e.detail
-        this.arrayTitle = Object.keys(this.objectArray[0])
-        const size = this.arrayTitle.length
-        this.titleArraySize = size
+        this.objectArray = e.detail;
+        this.arrayTitle = Object.keys(this.objectArray[-1]);
+        console.log('Array Lleno', this.arrayTitle);
       });
       this.$.ajax.generateRequest();
     }
@@ -88,11 +80,37 @@
           <caption>CLUSTER</caption>
 
           <!--Table titles-->
-          <template is="dom-repear" items="[[titleArraySize]]">
             <tr>
-              <td class = "verde">[[item]]</td>
+              <td class = "green">TIPODEOPERACION</td>
+              <td class = "green">PEM</td>
+              <td class = "green">MONTO</td>
+              <td class = "green">NACIONAL_INT</td>
+              <td class = "green">ECI</td>
+              <td class = "green">NIPOFF</td>
+              <td class = "green">CVV2</td>
+              <td class = "green">TJ_F_TJ_D</td>
+              <td class = "green">NIVELCUENTA</td>
+              <td class = "green">REINCIDENCIA</td>
+              <td class = "green">SEGMENTO</td>
+              <td class = "green">ANTIGUEDAD</td>
+              <td class = "green">Q2</td>
+              <td class = "green">DIASTRANSCURRIDOS</td>
+              <td class = "green">NUMOVIMIENTOS</td>
+              <td class = "green">DIFTIEMPOENTREMOVIMIENTOS</td>
+              <td class = "green">MONTOF</td>
+              <td class = "green">FRAUDE</td>
+              <td class = "green">TP_TNP</td>
+              <td class = "green">MISMOMONTO</td>
+              <td class = "green">MISMAAFILIACION</td>
+              <td class = "green">TIEMPOENTREMOVIMIENTOS</td>
+              <td class = "green">SUMAMONTOMOVIMIENTOSSELECCIONADOS</td>
+              <td class = "green">PATRONDESBLOQUEO</td>
+              <td class = "green">AUTHCE</td>
+              <td class = "green">DIFFECHAOPERACIONALTA</td>
+              <td class = "green">SITUACION</td>
+              <td class = "green">NORECONOCEPRODUCTO</td>
+              <td class = "green">SINMOVIMIENTO</td>
             </tr>
-          </template>
           <!--Table titles-->
 
           <!--Table content-->
@@ -117,10 +135,10 @@
               <td class = "green">[[item.MONTOF]]</td>
               <td class = "green">[[item.FRAUDE]]</td>
               <td class = "green">[[item.TP_TNP]]</td>
-              <td class = "green">[[item.MISMOMONT]]O</td>
+              <td class = "green">[[item.MISMOMONTO]]</td>
               <td class = "green">[[item.MISMAAFILIACION]]</td>
               <td class = "green">[[item.TIEMPOENTREMOVIMIENTOS]]</td>
-              <td class = "green">[[item.SUMAMONTOMOVIMIENTOSSELECCIONADOS]]</$
+              <td class = "green">[[item.SUMAMONTOMOVIMIENTOSSELECCIONADOS]]</td>
               <td class = "green">[[item.PATRONDESBLOQUEO]]</td>
               <td class = "green">[[item.AUTHCE]]</td>
               <td class = "green">[[item.DIFFECHAOPERACIONALTA]]</td>
@@ -138,4 +156,3 @@
   }
   customElements.define(ModuloCluster.is, ModuloCluster);
 }
-

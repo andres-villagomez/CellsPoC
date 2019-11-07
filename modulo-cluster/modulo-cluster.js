@@ -50,13 +50,13 @@
 
     /* REST connection */
     connectedCallback() {
-      super.connectedCallback();
+      super.connectedCallback()
       this.$.ajax.addEventListener('request-success', (e) => {
-        this.objectArray = e.detail;
-        this.arrayTitle = Object.keys(this.objectArray[-1]);
-        console.log('Array Lleno', this.arrayTitle);
-      });
-      this.$.ajax.generateRequest();
+        this.objectArray = e.detail
+        this.arrayTitle = Object.keys(this.objectArray[0])
+        console.log('Array Lleno', this.arrayTitle)
+      })
+      this.$.ajax.generateRequest()
     }
     /* REST connection*/
 
@@ -151,6 +151,7 @@
         </table>
       </div>
       <!--Dinamic table design-->
+      <button>Nombre</button>
       `;
     }
   }
